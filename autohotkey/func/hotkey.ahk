@@ -1,7 +1,20 @@
 #Include "./base.ahk" ; 引入函数
 #Include "./route.ahk" ; 引入路线解析
 
-global routes := newRoute("./text_route/" . routeFile)
+global screenWidth := A_ScreenWidth
+global screenHeight := A_ScreenHeight
+
+global screenKind := screenHeight / screenWidth
+global K169 := 0.5625
+global K1610 := 0.625
+
+global routes
+
+if (screenKind = K169) {
+    routes := newRoute("./text_route/" . routeFile)
+} else if (screenKind = K1610) {
+    routes := newRoute("./text_route1610/" . routeFile)
+}
 
 global waitQmSum := false ; 是否等夜兰Q完
 
@@ -18,11 +31,22 @@ global foodPos := [29464, 3096]
 global narrowPos := [1502, 39461]
 global enlargePos := [1502, 25923]
 
-screenWidth := A_ScreenWidth
-screenHeight := A_ScreenHeight
-
-if (screenHeight / screenWidth = 0.5625) {
+if (screenKind = K169) {
     tip("当前屏幕比例支持自动传送！", 2000)
+} else if (screenKind = K1610) {
+    tip("当前屏幕比例16:10支持部分自动传送！", 2000)
+
+    global crusadePos := [10167, 32993] ; 讨伐按钮的位置
+    global clearWheelPos := [32575, 18771] ; 清空滚轮的位置
+    global monsterColumnPos := [17005, 23305, 29528] ; 三列怪的不同x值
+    global monsterRowPos := 22419 ; 怪的y值
+    global rowWheelNum := 9 ; 滚动一行需要的滚轮数
+    global trackMonsterPos := [49196, 49387] ; 追踪怪的位置
+    global confirmPos := [56187, 61559] ; 确认按钮的位置
+    global selection := [[46917, 46641]] ; 点击锚点时多选按钮的位置
+    global foodPos := [29374, 2746]
+    global narrowPos := [1613, 38772]
+    global enlargePos := [1537, 26599]
 } else {
     tip("当前屏幕比例不支持自动传送！", 2000)
 }

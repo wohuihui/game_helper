@@ -1,0 +1,35 @@
+monster: [7, 2], pos: [64818, 9596]
+monster: [2, 2], pos: [1025, 58550]
+monster: [2, 2], pos: [12089, 29214]
+monster: [3, 3], pos: [43132, 45370]
+monster: [3, 3], pos: [27457, 20468], try: 2
+monster: [2, 1], pos: [37122, 8260]
+monster: [2, 1], pos: [29267, 0]
+monster: [2, 1], pos: [22437, 5527], select: 2
+monster: [2, 1], pos: [22437, 5527], select: 2
+monster: [2, 1], pos: [19363, 8564]
+monster: [2, 1], pos: [19363, 8564]
+monster: [2, 3], pos: [29950, 36381], try: 2
+monster: [2, 3], pos: [13524, 56910]
+monster: [6, 3], pos: [26159, 20165]
+monster: [6, 3], pos: [27594, 34681]
+monster: [6, 3], pos: [30565, 51930]
+monster: [6, 3], pos: [23052, 40026]
+monster: [6, 3], pos: [15573, 49622]
+monster: [7, 1], pos: [47025, 52780]
+monster: [7, 1], pos: [39376, 60312]
+monster: [7, 1], pos: [37258, 53388]
+monster: [7, 1], pos: [36678, 48893]
+monster: [8, 2], pos: [31658, 18585]
+monster: [8, 2], pos: [23701, 19375]
+monster: [8, 2], pos: [7616, 11601], narrow: 1
+monster: [8, 2], pos: [28174, 31401]
+monster: [8, 2], pos: [21822, 63956]
+monster: [8, 1], pos: [20081, 33648]
+monster: [4, 3], pos: [31828, 60312]
+monster: [4, 1], pos: [33297, 25813], try: 2
+monster: [5, 3], pos: [42722, 17067]
+monster: [5, 3], pos: [36678, 17553]
+monster: [6, 1], pos: [30155, 32433]
+monster: [6, 1], pos: [27560, 41848]
+monster: [6, 1], pos: [49211, 23748]
