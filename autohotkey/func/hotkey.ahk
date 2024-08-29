@@ -67,6 +67,7 @@ global DIRECT_TP_SLEEP := 90 ; 快传等待时间
 global DIRECT_TP_BAG_SLEEP := 80 ; 快传复位等待时间
 global QUICK_PICK_SLEEP := 5 ; 快检等待时间，5不意味着5ms！！！
 global BAG_SLEEP := 500 ; 开背包的延迟
+global OPEN_MAP_SLEEP := 440 ; 开地图延迟
 
 SetDefaultMouseSpeed 16 ; 拖动地图时的鼠标移速
 
@@ -85,6 +86,9 @@ global qmMode := false
 
 ; 上一次追踪的怪
 global prevMonster := [0, 0]
+
+; 开图键位
+global openMapKey := "m"
 
 ; 传送至下一个点位
 tpNext(qm) {
@@ -136,7 +140,6 @@ executeStep(step, qmParam) {
     selectX := 0
     selectY := 0
     wait := 0
-    selectionWait := 0
     qm := true
     wheel := 0
     x := 0
@@ -155,13 +158,9 @@ executeStep(step, qmParam) {
     if (HasProp(step, "wait")) {
         wait := step.wait
     }
-    if (HasProp(step, "selectionWait")) {
-        selectionWait := step.selectionWait
-    }
     if (HasProp(step, "qm")) {
         qm := step.qm
     }
-
     if (fastMode && HasProp(step, "fastPos")) {
         x := step.fastPos[1]
         y := step.fastPos[2]
@@ -206,8 +205,8 @@ executeStep(step, qmParam) {
     }
 
     if (fastMode && pointFast) {
-        Send "m"
-        Sleep 440
+        Send openMapKey
+        Sleep OPEN_MAP_SLEEP
     } else {
         Send "{F1}"
         if (crusade) {
@@ -221,6 +220,12 @@ executeStep(step, qmParam) {
             sum += BOOK_SLEEP2
         }
 
+        ; 额外等开书
+        if (HasProp(step, "waitBook")) {
+            Sleep step.waitBook
+            sum += step.waitBook
+        }
+
         ; 点击讨伐
         if (crusade) {
             op("click", crusadePos, CRUSADE_SLEEP)
@@ -232,11 +237,7 @@ executeStep(step, qmParam) {
             op("longClick", clearWheelPos, CLICK_DOWN_SLEEP) ; 清空滚轮
             sum += CLICK_DOWN_SLEEP
 
-            monsterWheel := (row - 1) * rowWheelNum
-            LOOP monsterWheel {
-                Send "{WheelDown}"
-            }
-            Sleep WHEEL_SLEEP
+            op("wheel", (row - 1) * rowWheelNum, WHEEL_SLEEP)
             sum += WHEEL_SLEEP
 
             map := monsterColumnPos
@@ -257,6 +258,12 @@ executeStep(step, qmParam) {
             sum += MAP_SLEEP2
             prevMonster[1] := row
             prevMonster[2] := column
+        }
+
+        ; 额外等开地图
+        if (HasProp(step, "waitMap")) {
+            Sleep step.waitMap
+            sum += step.waitMap
         }
     }
 
@@ -281,23 +288,9 @@ executeStep(step, qmParam) {
     }
 
     if (wheel != 0) {
-        if (wheel > 0) {
-            Loop wheel {
-                Send "{WheelDown}"
-            }
-        } else {
-            Loop -wheel {
-                Send "{WheelUp}"
-            }
-        }
+        op("wheel", wheel, WHEEL_SLEEP)
     }
-    Sleep WHEEL_SLEEP
     sum += WHEEL_SLEEP
-
-    if (selectionWait != 0) {
-        Sleep selectionWait
-        sum += selectionWait
-    }
 
     ; 点击传送锚点
     op("click", [x, y], 0)
@@ -316,6 +309,12 @@ executeStep(step, qmParam) {
     if (selectX != 0 && selectY != 0) {
         op("click", [selectX, selectY], SELECT_TWO_CLICK_SLEEP)
         sum += SELECT_TWO_CLICK_SLEEP
+    }
+
+    ; 额外等点击确认
+    if (HasProp(step, "waitConfirm")) {
+        Sleep step.waitConfirm
+        sum += step.waitConfirm
     }
 
     ; 为了qm，补足整个延迟时间

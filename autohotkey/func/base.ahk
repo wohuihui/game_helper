@@ -31,6 +31,17 @@ op(type, params, delay) {
         Send "{LButton down}"
         Sleep delay
         Send "{LButton up}"
+    } else if (type = "wheel") {
+        if (params > 0) {
+            LOOP params {
+                Send "{WheelDown}"
+            }
+        } else if (params < 0) {
+            LOOP -params {
+                Send "{WheelUp}"
+            }
+        }
+        Sleep delay
     }
 }
 

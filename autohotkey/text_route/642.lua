@@ -36,7 +36,7 @@ monster: [6, 1], pos: [51322, 34657]
 monster: [6, 1], pos: [28017, 61300], wheel: 10
 monster: [6, 2], pos: [35982, 16076], qm: false
 monster: [6, 2], pos: [47378, 19811], qm: false
-monster: [6, 2], pos: [36212, 30331], selectionWait: 120
+monster: [6, 2], pos: [36212, 30331], waitBook: 120
 monster: [6, 2], pos: [43690, 33792]
 monster: [6, 2], pos: [55112, 45314]
 monster: [6, 2], pos: [47531, 54742], wheel: 20
