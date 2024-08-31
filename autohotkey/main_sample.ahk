@@ -57,6 +57,8 @@ global waitQmSum := false ; 是否等角色Q完（Q太快会被吞，可以设�
 
 global qmMode := false ; 是否开启qm模式
 
+global openMapKey := "m" ; 开图键位
+
 if (tpSpeed = 1) {
     global BUTTON_SLEEP := 80 ; 点击按钮的延时
     global BOOK_SLEEP := 550 ; 不跨怪开书等待时间

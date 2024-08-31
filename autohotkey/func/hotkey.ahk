@@ -67,7 +67,7 @@ global DIRECT_TP_SLEEP := 90 ; 快传等待时间
 global DIRECT_TP_BAG_SLEEP := 80 ; 快传复位等待时间
 global QUICK_PICK_SLEEP := 5 ; 快检等待时间，5不意味着5ms！！！
 global BAG_SLEEP := 500 ; 开背包的延迟
-global OPEN_MAP_SLEEP := 440 ; 开地图延迟
+global OPEN_MAP_SLEEP := 520 ; 开地图延迟
 
 SetDefaultMouseSpeed 16 ; 拖动地图时的鼠标移速
 
