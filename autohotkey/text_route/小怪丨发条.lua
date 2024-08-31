@@ -13,7 +13,7 @@ monster: [9, 3], pos: [15948, 50047]
 monster: [10, 2], pos: [35687, 49136]
 monster: [10, 2], pos: [45147, 50654]
 monster: [9, 2], pos: [24588, 13605], try: 2
-monster: [9, 2], pos: [21788, 29214]}, 
+monster: [9, 2], pos: [21788, 29214],
 monster: [9, 2], pos: [17041, 8078], narrow: -2
 monster: [9, 2], pos: [17041, 8078], narrow: -2
 monster: [9, 2], pos: [27252, 32008]
