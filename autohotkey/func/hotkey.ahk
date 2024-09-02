@@ -30,6 +30,7 @@ global selection := [[46552, 44560]] ; 点击锚点时多选按钮的位置
 global foodPos := [29464, 3096]
 global narrowPos := [1502, 39461]
 global enlargePos := [1502, 25923]
+global mapAreas := [[49574, 10867], [59492, 11079], [49335, 17484], [59475, 17606], [49642, 23555], [58416, 23707], [49335, 30992], [59458, 30961], [49284, 37154]]
 
 if (screenKind = K169) {
     tip("当前屏幕比例支持自动传送！", 2000)
@@ -83,6 +84,9 @@ global crusade := true
 global tpForbidden := false
 global fastMode := false
 global qmMode := false
+global FAST_TP := 1
+global F2_TP := 2
+global AREA_TP := 3
 
 ; 上一次追踪的怪
 global prevMonster := [0, 0]
@@ -145,8 +149,8 @@ executeStep(step, qmParam) {
     x := 0
     y := 0
     narrow := 0
-    pointFast := false
     qmTp := false
+    tpMethod := F2_TP
 
     ; 记录开图总时间
     sum := 0
@@ -164,22 +168,27 @@ executeStep(step, qmParam) {
     if (fastMode && HasProp(step, "fastPos")) {
         x := step.fastPos[1]
         y := step.fastPos[2]
-        pointFast := true
-    } else {
+        tpMethod := FAST_TP
+    } else if (HasProp(step, "pos")) {
         x := step.pos[1]
         y := step.pos[2]
+        tpMethod := F2_TP
+    } else {
+        x := step.posArea[1]
+        y := step.posArea[2]
+        tpMethod := AREA_TP
     }
 
-    if (fastMode && pointFast && HasProp(step, "fastWheel")) {
+    if (fastMode && (tpMethod = FAST_TP) && HasProp(step, "fastWheel")) {
         wheel := step.fastWheel
-    } else if (!pointFast && HasProp(step, "wheel")) {
+    } else if ((tpMethod = F2_TP) && HasProp(step, "wheel")) {
         wheel := step.wheel
     }
 
     ; 如果你是处于快速模式，且你的点位有标记，就采用开地图直传的方式
-    if (fastMode && pointFast && HasProp(step, "fastNarrow")) {
+    if (fastMode && (tpMethod = FAST_TP) && HasProp(step, "fastNarrow")) {
         narrow := step.fastNarrow
-    } else if (!pointFast && HasProp(step, "narrow")) {
+    } else if ((tpMethod = F2_TP) && HasProp(step, "narrow")) {
         narrow := step.narrow
     }
 
@@ -204,10 +213,10 @@ executeStep(step, qmParam) {
         Sleep 10
     }
 
-    if (fastMode && pointFast) {
+    if (fastMode && (tpMethod = FAST_TP)) {
         Send openMapKey
         Sleep OPEN_MAP_SLEEP
-    } else {
+    } else if (tpMethod = F2_TP) {
         Send "{F1}"
         if (crusade) {
             Sleep BOOK_SLEEP3
@@ -265,6 +274,9 @@ executeStep(step, qmParam) {
             Sleep step.waitMap
             sum += step.waitMap
         }
+    } else if (tpMethod = AREA_TP) {
+        op("click", confirmPos, BUTTON_SLEEP)
+        op("click", mapAreas[step.area], BUTTON_SLEEP)
     }
 
     ; 缩小
