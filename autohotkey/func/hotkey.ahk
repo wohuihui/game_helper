@@ -172,6 +172,11 @@ executeStep(step, qmParam) {
     } else if (HasProp(step, "pos")) {
         x := step.pos[1]
         y := step.pos[2]
+
+        row := step.monster[1]
+        column := step.monster[2]
+        sameMonster := prevMonster[1] = row && prevMonster[2] = column
+
         tpMethod := F2_TP
     } else {
         x := step.posArea[1]
@@ -191,11 +196,6 @@ executeStep(step, qmParam) {
     } else if ((tpMethod = F2_TP) && HasProp(step, "narrow")) {
         narrow := step.narrow
     }
-
-    row := step.monster[1]
-    column := step.monster[2]
-
-    sameMonster := prevMonster[1] = row && prevMonster[2] = column
 
     if (qmParam) {
         qmTp := qmParam
@@ -275,8 +275,10 @@ executeStep(step, qmParam) {
             sum += step.waitMap
         }
     } else if (tpMethod = AREA_TP) {
+        Send openMapKey
+        Sleep OPEN_MAP_SLEEP
         op("click", confirmPos, BUTTON_SLEEP)
-        op("click", mapAreas[step.area], BUTTON_SLEEP)
+        op("click", mapAreas[step.area], 200)
     }
 
     ; 缩小
