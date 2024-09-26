@@ -12,7 +12,7 @@ click() {
 
     keepClicking := true
     while keepClicking {
-        Send "{Right}"
-        Sleep 500
+        Send "{enter}"
+        Sleep 50
     }
 }
