@@ -1,6 +1,6 @@
 #MaxThreadsPerHotKey 3
 XButton2::click()
-space::click()
+;space::click()
 
 click() {
     static keepClicking := false
