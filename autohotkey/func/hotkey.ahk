@@ -555,7 +555,7 @@ resurrection() {
 ; 输入别人发车的UID
 pastUID() {
     op("click", pastePos, 1)
-    op("click", searchPos, 1)
+    op("click", searchPos, 200)
     op("click", applyEnterPos, 1)
     op("click", pastePos, 1)
 }
