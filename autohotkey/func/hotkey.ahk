@@ -551,16 +551,3 @@ resurrection() {
         Sleep (9 * 1000)
     }
 }
-
-; 输入别人发车的UID
-pastUID() {
-    op("click", pastePos, 1)
-    op("click", searchPos, 200)
-    op("click", applyEnterPos, 1)
-    op("click", pastePos, 1)
-}
-
-
-global pastePos := [50786, 7164] ; 粘贴按钮
-global searchPos := [57307, 7255] ; 搜索按钮
-global applyEnterPos := [55497, 14570] ; 申请加入按钮

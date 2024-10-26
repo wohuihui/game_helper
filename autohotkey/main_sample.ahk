@@ -47,7 +47,6 @@ Up::showCoord(false)
 Ctrl & Up::showCoord(true)
 Down::startTiming()
 XButton2::quickTp()
-XButton1::pastUID()
 tab::eatFood()
 
 global debugMode := true ; 是否开启debug模式
