@@ -1,4 +1,4 @@
-monster: [8, 3], pos: [47918, 35211]
+monster: [8, 3], pos: [47918, 35211] --起点
 monster: [8, 3], pos: [36634, 32509]
 monster: [8, 3], pos: [33425, 39430]
 monster: [3, 1], pos: [36958, 61741], narrow: 1
@@ -7,7 +7,7 @@ monster: [3, 1], pos: [15534, 62439]
 monster: [10, 3], pos: [57973, 41950]
 monster: [2, 3], pos: [20861, 32570]
 monster: [10, 3], pos: [40765, 25558]
-monster: [2, 3], pos: [6538, 16149], narrow: 1
+monster: [10, 3], pos: [41254, 5223], narrow: 1
 monster: [10, 3], pos: [34039, 1305], narrow: 1
 monster: [10, 3], pos: [23558, 6860]
 monster: [9, 1], pos: [46125, 38034]
