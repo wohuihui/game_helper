@@ -70,6 +70,7 @@ global QUICK_PICK_SLEEP := 5 ; 快检等待时间，5不意味着5ms！！！
 global BAG_SLEEP := 500 ; 开背包的延迟
 global OPEN_MAP_SLEEP := 550 ; 开地图延迟
 global AREA_SLEEP := 200 ; 切换地图延迟
+global TP_COOL_DOWN := 3000 ; 传送冷却时间
 
 SetDefaultMouseSpeed 16 ; 拖动地图时的鼠标移速
 
@@ -109,7 +110,7 @@ tpNext(qm) {
     if (routeIndex > 0 && routeIndex <= routes.Length) {
         executeStep routes[routeIndex], qm
     }
-    SetTimer () => tpForbidden := false , -5000
+    SetTimer () => tpForbidden := false , -TP_COOL_DOWN
 }
 
 ; 传送至上一个点位
@@ -127,7 +128,7 @@ tpPrev() {
     if (routeIndex > 0 && routeIndex <= routes.Length) {
         executeStep routes[routeIndex], false
     }
-    SetTimer () => tpForbidden := false , -8000
+    SetTimer () => tpForbidden := false , -TP_COOL_DOWN
 }
 
 ; 执行每一步
@@ -483,8 +484,8 @@ eatFood() {
     }
 
     for (food in foodList) {
-        op("click", food, BUTTON_SLEEP)
-        op("click", confirmPos, BUTTON_SLEEP)
+        op("click", food, 50)
+        op("click", confirmPos, 50)
     }
     ; 关闭背包
     sendInput "{Blind}b"
@@ -509,7 +510,7 @@ aarr() {
         Click
         Sleep 200
         Click
-        Sleep 250
+        Sleep 240
         Send "{Blind}r"
         Sleep 80
         Send "{Blind}r"
