@@ -1,6 +1,7 @@
 monster: [6, 3], pos: [26125, 20165]
 monster: [6, 3], pos: [26364, 28425]
 monster: [6, 3], pos: [14480, 30308]
+monster: [6, 3], pos: [14480, 30308]
 monster: [6, 3], pos: [7172, 42212]
 monster: [7, 1], pos: [31077, 35895], narrow: -1
 monster: [7, 1], pos: [39307, 60494]
