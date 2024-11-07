@@ -35,7 +35,7 @@
 复制以下链接：
 
 ```
-https://gitee.com/liu-kangjian/game_helper.git
+https://gitee.com/srefp/game_helper.git
 ```
 
 
