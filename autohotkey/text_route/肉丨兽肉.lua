@@ -1,8 +1,8 @@
-monster: [8, 3], pos: [52421, 25145]
-monster: [8, 2], pos: [5806, 0]
-monster: [7, 3], pos: [38863, 8139]
-monster: [8, 1], pos: [28516, 22230]
-monster: [8, 1], pos: [21276, 9596]
-monster: [8, 2], pos: [65467, 35410]
-monster: [7, 1], pos: [50748, 43305]
-monster: [7, 1], pos: [57373, 27696]
+monster: [8, 3], pos: [52421, 25145], name:"峰刃林泽"
+monster: [8, 3], pos: [52192, 56290], narrow: 1, waitConfirm: 100, name:"草龙周本"
+monster: [7, 3], pos: [38863, 8139], name:"列柱沙原七天"
+monster: [8, 1], pos: [28516, 22230], name:"活力之家"
+monster: [8, 1], pos: [21276, 9596], name:"舍身陷坑上方锚点"
+monster: [8, 2], pos: [65467, 35410], name:"禅那园"
+monster: [7, 1], pos: [50748, 43305], name:"二净旬北侧河边锚点"
+monster: [7, 1], pos: [57373, 27696], name:"茸蕈窟山顶"
