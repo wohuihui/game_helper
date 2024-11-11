@@ -192,18 +192,18 @@ executeStep(step, qmParam) {
         wheel := step.wheel
     }
 
-    ; 直接开图拖动
-    if (fastMode && (tpMethod = FAST_TP) && HasProp(step, "fastDrag")) {
-        drag := step.fastDrag
-        op("drag", drag, BUTTON_SLEEP)
-        sum += BUTTON_SLEEP
-    }
-
     ; 如果你是处于快速模式，且你的点位有标记，就采用开地图直传的方式
     if (fastMode && (tpMethod = FAST_TP) && HasProp(step, "fastNarrow")) {
         narrow := step.fastNarrow
     } else if ((tpMethod = F2_TP) && HasProp(step, "narrow")) {
         narrow := step.narrow
+    }
+
+    ; 直接开图拖动
+    if (fastMode && (tpMethod = FAST_TP) && HasProp(step, "fastDrag")) {
+        drag := step.fastDrag
+        op("drag", drag, BUTTON_SLEEP)
+        sum += BUTTON_SLEEP
     }
 
     if (qmParam) {
